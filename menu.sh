@@ -150,6 +150,12 @@ show_header
 
 while true; do
 advanced_menu_selector "Choose an action:" choice "Instagram analysis" "Film" "Stocks" "SSH Raspberry Pi" "Restart" "Exit"
+# Check if user cancelled (pressed q, Q, or Ctrl+C)
+if [[ $? -eq 130 ]]; then
+    clear
+    break
+fi
+
 if [[ "$choice" == "Instagram analysis" ]]; then
   cd "$HOME/Desktop/Programming/0 Done/Instagram_Analysis"
   conda run -n base python instagram_comparison.py
